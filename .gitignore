@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Spark / Hadoop
+spark-logs/
+*.parquet
+*.crc
+_SUCCESS
+*.csv
+*.npz
+
+# Docker
+docker/data/
+docker/logs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
