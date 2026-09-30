@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  master:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: master
+    hostname: master
+    environment:
+      - ROLE=master
+    ports:
+      - "9870:9870"
+      - "8088:8088"
+      - "18080:18080"
+      - "4040:4040"
+    volumes:
+      - namenode_data:/hadoop/dfs/name
+    networks:
+      - bignet
+
+  worker1:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: worker1
+    hostname: worker1
+    environment:
+      - ROLE=worker
+    volumes:
+      - datanode1_data:/hadoop/dfs/data
+    networks:
+      - bignet
+    depends_on:
+      - master
+
+  worker2:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: worker2
+    hostname: worker2
+    environment:
+      - ROLE=worker
+    volumes:
+      - datanode2_data:/hadoop/dfs/data
+    networks:
+      - bignet
+    depends_on:
+      - master
+
+networks:
+  bignet:
+    name: bignet
+
+volumes:
+  namenode_data:
+  datanode1_data:
+  datanode2_data:
