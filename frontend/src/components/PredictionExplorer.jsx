@@ -17,7 +17,7 @@ const CongestionBadge = ({ level }) => {
   );
 };
 
-const PredictionExplorer = () => {
+const PredictionExplorer = ({ refreshTrigger }) => {
   const [records, setRecords] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [sensors, setSensors] = useState([]);
@@ -81,7 +81,7 @@ const PredictionExplorer = () => {
 
   useEffect(() => {
     fetchPredictionsData();
-  }, [sensorId, congestionFilter, startTime, endTime, offset]);
+  }, [sensorId, congestionFilter, startTime, endTime, offset, refreshTrigger]);
 
   // Handle filter changes that require resetting to page 1
   const handleSensorChange = (e) => { setSensorId(e.target.value); setOffset(0); };
