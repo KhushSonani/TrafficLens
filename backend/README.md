@@ -96,6 +96,17 @@ Response:
 
 ---
 
+### Analytics (Task 3)
+
+The following analytics endpoints are built to support the React Dashboard. Detailed documentation is in [`docs/backend-analytics-api.md`](../docs/backend-analytics-api.md).
+
+- `GET /api/analytics/summary` — Global statistics, accuracy, total predictions, total sensors
+- `GET /api/analytics/congestion-distribution` — LOW/MEDIUM/HIGH percentage distribution
+- `GET /api/analytics/sensors` — Aggregated congestion statistics per sensor
+- `GET /api/analytics/timeseries` — Timeseries aggregation of congestion data, grouped in 5-minute intervals
+
+---
+
 ### Predictions
 
 ```
