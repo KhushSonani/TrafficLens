@@ -1,2 +1,10 @@
 dataset/metr-la.h5
 dataset/*.csv
+
+# ML pipeline output (large file - regenerate with prepare_ml_data.py)
+output/ml_prepared_traffic.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
