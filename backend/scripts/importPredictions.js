@@ -24,9 +24,14 @@ const Prediction = require('../src/models/Prediction');
 // ---------------------------------------------------------------------------
 // Configuration
 // ---------------------------------------------------------------------------
+let projectRoot = process.cwd();
+if (projectRoot.endsWith('backend')) {
+  projectRoot = path.resolve(projectRoot, '..');
+}
+
 const CSV_PATH = process.env.PREDICTIONS_CSV_PATH
-  ? path.resolve(__dirname, process.env.PREDICTIONS_CSV_PATH)
-  : path.resolve(__dirname, '../../output/predictions.csv');
+  ? path.resolve(projectRoot, process.env.PREDICTIONS_CSV_PATH)
+  : path.resolve(projectRoot, 'output/predictions.csv');
 
 const BATCH_SIZE = 5000; // Number of documents per bulkWrite batch
 const PROB_SUM_TOLERANCE = 0.02; // Floating-point tolerance for probability sum check

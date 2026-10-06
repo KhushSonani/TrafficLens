@@ -42,7 +42,7 @@ cp .env.example .env
 |---|---|---|
 | `PORT` | `5000` | Express server port |
 | `MONGODB_URI` | `mongodb://localhost:27017/trafficlens` | MongoDB connection string |
-| `PREDICTIONS_CSV_PATH` | `../output/predictions.csv` | Path to Student 2 CSV output |
+| `PREDICTIONS_CSV_PATH` | `output/predictions.csv` | Path to Student 2 CSV output (relative to project root) |
 
 ---
 
