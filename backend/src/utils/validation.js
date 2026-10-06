@@ -51,9 +51,19 @@ function parseSensorId(raw) {
   return { value: n };
 }
 
+function parseCongestionClass(raw) {
+  if (!raw) return { value: null };
+  const allowed = ['LOW', 'MEDIUM', 'HIGH'];
+  if (!allowed.includes(raw)) {
+    return { error: `congestion_class must be one of ${allowed.join(', ')}; received "${raw}"` };
+  }
+  return { value: raw };
+}
+
 module.exports = {
   parseLimit,
   parseOffset,
   parseDate,
-  parseSensorId
+  parseSensorId,
+  parseCongestionClass
 };

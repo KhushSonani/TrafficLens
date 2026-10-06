@@ -42,11 +42,12 @@ export const getTimeseries = ({ limit = 100, offset = 0, sensorId, startTime, en
   return fetchApi(`/analytics/timeseries?${query.toString()}`);
 };
 
-export const getPredictions = ({ limit = 100, offset = 0, sensorId, startTime, endTime } = {}) => {
+export const getPredictions = ({ limit = 100, offset = 0, sensorId, congestionClass, startTime, endTime } = {}) => {
   const query = new URLSearchParams();
   query.append('limit', limit);
   query.append('offset', offset);
   if (sensorId) query.append('sensor_id', sensorId);
+  if (congestionClass) query.append('congestion_class', congestionClass);
   if (startTime) query.append('start_time', startTime);
   if (endTime) query.append('end_time', endTime);
   return fetchApi(`/predictions?${query.toString()}`);

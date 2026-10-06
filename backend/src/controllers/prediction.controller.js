@@ -23,7 +23,7 @@
 
 const Prediction = require('../models/Prediction');
 
-const { parseLimit, parseOffset, parseDate, parseSensorId } = require('../utils/validation');
+const { parseLimit, parseOffset, parseDate, parseSensorId, parseCongestionClass } = require('../utils/validation');
 
 // ---------------------------------------------------------------------------
 // Controller
@@ -49,6 +49,9 @@ const getPredictions = async (req, res) => {
 
     const sensorResult = parseSensorId(req.query.sensor_id);
     if (sensorResult.error) validationErrors.push(sensorResult.error);
+
+    const congestionResult = parseCongestionClass(req.query.congestion_class);
+    if (congestionResult.error) validationErrors.push(congestionResult.error);
 
     const startResult = parseDate(req.query.start_time, 'start_time');
     if (startResult.error) validationErrors.push(startResult.error);
@@ -81,6 +84,10 @@ const getPredictions = async (req, res) => {
 
     if (sensorResult.value !== null) {
       filter.sensor_id = sensorResult.value;
+    }
+
+    if (congestionResult.value !== null) {
+      filter.predicted_congestion = congestionResult.value;
     }
 
     if (startResult.value || endResult.value) {

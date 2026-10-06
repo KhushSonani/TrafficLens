@@ -72,6 +72,11 @@ body {
   color: var(--color-low);
   border: 1px solid #a7f3d0;
 }
+.status-badge-medium {
+  background-color: var(--color-medium-bg);
+  color: var(--color-medium);
+  border: 1px solid #fde68a;
+}
 .status-badge.disconnected {
   background-color: var(--color-high-bg);
   color: var(--color-high);

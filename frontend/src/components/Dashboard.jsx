@@ -4,6 +4,7 @@ import SummaryCards from './SummaryCards';
 import CongestionDistribution from './CongestionDistribution';
 import TrafficTimeseries from './TrafficTimeseries';
 import SensorAnalytics from './SensorAnalytics';
+import PredictionExplorer from './PredictionExplorer';
 
 const Dashboard = () => {
   const [healthStatus, setHealthStatus] = useState('Checking...');
@@ -96,6 +97,7 @@ const Dashboard = () => {
           </div>
 
           <SensorAnalytics />
+          <PredictionExplorer />
         </>
       )}
     </div>
