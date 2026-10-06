@@ -12,3 +12,8 @@ output/predictions.csv
 __pycache__/
 *.pyc
 *.pyo
+
+# Node.js
+backend/node_modules/
+backend/.env
+*.log
